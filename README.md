@@ -1,0 +1,1 @@
+# This repo contains Ethnus MERN stack Assignments
