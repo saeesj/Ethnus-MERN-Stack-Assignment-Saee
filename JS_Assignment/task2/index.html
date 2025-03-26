@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetize String</title>
+    <style>
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p, input, button {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        span {
+            font-weight: bold;
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Alphabetize a String</h2>
+    <p>Enter a String: <input type="text" id="userInput" /></p>
+    <button onclick="alphabetizeUserString()">Alphabetize It!</button>
+    <p>Original String: <span id="originalString"></span></p>
+    <p>Alphabetized String: <span id="alphabetizedString"></span></p>
+    <br>
+    <hr>
+    <br>
+    <p>Example:</p>
+    <p>Original String: <span id="originalStringeg"></span></p>
+    <p>Alphabetized String: <span id="alphabetizedStringeg"></span></p>
+
+    <script>
+        function alphabetizeString(str) {
+            return str.split('').sort().join('');
+        }
+        // Example usage
+        let exampleString = "webmaster";
+        let sortedString = alphabetizeString(exampleString);
+
+        // Display values on the webpage
+        document.getElementById("originalStringeg").textContent = exampleString;
+        document.getElementById("alphabetizedStringeg").textContent = sortedString;
+
+        function alphabetizeUserString() {
+            const userInput = document.getElementById("userInput").value;
+            if (userInput.trim() === "") {
+                alert("Please enter a string!");
+                return;
+            }
+            const sorted = alphabetizeString(userInput);
+            document.getElementById("originalString").textContent = userInput;
+            document.getElementById("alphabetizedString").textContent = sorted;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; }
+    .error { color: red; font-size: 14px; margin-left: 10px; }
+    input, textarea { border: 1px solid #ccc; padding: 10px; font-size: 16px; border-radius: 5px; }
+    input.error-border, textarea.error-border { border-color: red; }
+    button { padding: 12px 20px; font-size: 16px; background-color: #dddddd; color: rgb(21, 21, 21); border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background-color: #45a049; }
+    label { font-weight: bold; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <form id="myForm" onsubmit="return validateForm()">
+    <label>Name: <input type="text" id="name"></label>
+    <span id="nameError" class="error">This field is required</span><br><br>
+    <label>Email: <input type="text" id="email"></label>
+    <span id="emailError" class="error">A valid email address is required</span><br><br>
+    <label>Website: <input type="text" id="website"></label>
+    <span id="websiteError" class="error">A valid URL is required</span><br><br>
+    <label>Message: <textarea id="message" rows="5" cols="40"></textarea></label>
+    <span id="messageError" class="error">This field is required</span><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      let isValid = true;
+
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const website = document.getElementById('website');
+      const message = document.getElementById('message');
+
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const websiteError = document.getElementById('websiteError');
+      const messageError = document.getElementById('messageError');
+
+      // Reset Errors
+      [nameError, emailError, websiteError, messageError].forEach(el => el.style.visibility = 'visible');
+      [name, email, website, message].forEach(el => el.classList.remove('error-border'));
+
+      if (name.value.trim() === '') {
+        name.classList.add('error-border');
+        isValid = false;
+      }
+      if (email.value.trim() === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('error-border');
+        isValid = false;
+      }
+      if (website.value.trim() === '' || !/^https?:\/\/.+/.test(website.value)) {
+        website.classList.add('error-border');
+        isValid = false;
+      }
+      if (message.value.trim() === '') {
+        message.classList.add('error-border');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+</html>

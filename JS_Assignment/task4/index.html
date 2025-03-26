@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Date and Time</title>
+    <style>
+        body {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        span {
+            font-size: 26px;
+            font-weight: bold;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Show Current Date and Time</h2>
+
+    <button onclick="showDate()">Show Date</button>
+    <p>Current Date: <span id="dateDisplay"></span></p>
+
+    <button onclick="showTime()">Show Time</button>
+    <p>Current Time: <span id="timeDisplay"></span></p>
+
+    <script>
+        function showDate() {
+            let today = new Date();
+            let formattedDate = today.getDate() + "/" +
+                                today.toLocaleString('default', { month: 'long' }) + "/" +
+                                today.getFullYear();
+            document.getElementById("dateDisplay").textContent = formattedDate;
+        }
+
+        function showTime() {
+            let currentTime = new Date();
+            let formattedTime = currentTime.toString(); // Includes GMT and timezone info
+            document.getElementById("timeDisplay").textContent = formattedTime;
+        }
+    </script>
+
+</body>
+</html>

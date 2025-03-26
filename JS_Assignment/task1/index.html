@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Number</title>
+    <style>
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p, input, button {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        span {
+            font-weight: bold;
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Reverse a Number</h2>
+    <p>Enter a Number: <input type="number" id="userInput" /></p>
+    <button onclick="reverseUserNumber()">Reverse It!</button>
+    <p>Original Number: <span id="originalNumber"></span></p>
+    <p>Reversed Number: <span id="reversedNumber"></span></p>
+    <br>
+    <hr>
+    <br>
+    <p>Example:</p>
+    <p>Original Number: <span id="originalNumberEg"></span></p>
+    <p>Reversed Number: <span id="reversedNumberEg"></span></p>
+
+    <script>
+        function reverseNumber(num) {
+            return parseInt(num.toString().split('').reverse().join(''));
+        }
+
+        // Example usage
+        let exampleNumber = 32243;
+        let reversedExample = reverseNumber(exampleNumber);
+
+        // Display example values on the webpage
+        document.getElementById("originalNumberEg").textContent = exampleNumber;
+        document.getElementById("reversedNumberEg").textContent = reversedExample;
+
+        function reverseUserNumber() {
+            const userInput = document.getElementById("userInput").value;
+            if (userInput === "") {
+                alert("Please enter a number!");
+                return;
+            }
+            const reversed = reverseNumber(userInput);
+            document.getElementById("originalNumber").textContent = userInput;
+            document.getElementById("reversedNumber").textContent = reversed;
+        }
+    </script>
+
+</body>
+</html>

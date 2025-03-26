@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Train Animation</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #train {
+      position: absolute; /* Changed to absolute */
+      width: 250px; /* Increased size */
+      height: auto;
+    }
+    #animationContainer {
+      width: 100%;
+      height: 250px; /* Adjusted height to fit larger train */
+      overflow: hidden;
+      background-color: #f0f0f0;
+      position: relative;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="animationContainer">
+    <img src="/JS_Assignment/train.png" id="train" alt="Train" />
+  </div>
+  <h2>Click the following buttons to handle animation</h2>
+  <button onclick="startAnimation()" class="btn btn-primary">Start</button>
+  <button onclick="stopAnimation()" class="btn btn-secondary">Stop</button>
+
+  <script>
+    let train = document.getElementById('train');
+    let container = document.getElementById('animationContainer');
+    let trainPosition = 0;
+    let animationId;
+
+    function startAnimation() {
+      stopAnimation();
+      animationId = setInterval(() => {
+        if (trainPosition > container.offsetWidth) {
+          trainPosition = -train.offsetWidth;
+        } else {
+          trainPosition += 5;
+        }
+        train.style.left = trainPosition + 'px';
+      }, 30);
+    }
+
+    function stopAnimation() {
+      clearInterval(animationId);
+    }
+  </script>
+</body>
+</html>
